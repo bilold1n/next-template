@@ -2,7 +2,7 @@ import React from "react";
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-20 bg-[#0E1420] flex flex-col items-center py-4">
+    <div className="h-[650px] w-20 bg-[#0E1420] flex flex-col items-center py-4 rounded-xl">
       <div className="w-full flex justify-center mb-8">
         <img src="/Path.png" alt="" className="h-8 w-8" />
       </div>

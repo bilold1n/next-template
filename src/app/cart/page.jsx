@@ -34,6 +34,17 @@ export default function Cart() {
       </div>
       <div className="container">
         <h2 className="mt-5 text-2xl">Recommended for you</h2>
+        <div className="justify-between gap-9 mt-5 grid grid-cols-4">
+          <img className="" src="/Group 2.png" alt="" />
+          <img className="" src="/Group 5.png" alt="" />
+          <img className="" src="/Group 6.png" alt="" />
+          <img className="" src="/Group 7.png" alt="" />
+          <img className="" src="/Group 8.png" alt="" />
+          <img className="" src="/Group 9.png" alt="" />
+          {/* <img className="" src="/Group 10.png" alt="" /> */}
+          <img className="" src="/Group 12.png" alt="" />
+          <img className="" src="/Group 11.png" alt="" />
+        </div>
       </div>
     </div>
   );
