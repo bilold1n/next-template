@@ -26,14 +26,9 @@ export default function Cart() {
           />
         </label>
       </div>
-      <h2 className="mt-5 text-2xl container">Trending</h2>
-      <div className="container flex items-center justify-between mt-5">
-        <img src="/Group 17.svg" alt="" />
-        <img src="/Group 20.svg" alt="" />
-        <img src="/Group 21.svg" alt="" />
-      </div>
+
       <div className="container">
-        <h2 className="mt-5 text-2xl">Recommended for you</h2>
+        <h2 className="mt-5 text-2xl">Movies</h2>
         <div className="justify-between gap-9 mt-5 grid grid-cols-4">
           <img className="" src="/Group 2.png" alt="" />
           <img className="" src="/Group 5.png" alt="" />
@@ -41,9 +36,14 @@ export default function Cart() {
           <img className="" src="/Group 7.png" alt="" />
           <img className="" src="/Group 8.png" alt="" />
           <img className="" src="/Group 9.png" alt="" />
-          {/* <img className="" src="/Group 10.png" alt="" /> */}
+
           <img className="" src="/Group 12.png" alt="" />
           <img className="" src="/Group 11.png" alt="" />
+          <img className="" src="/Group 9.png" alt="" />
+          <img className="" src="/Group 9 (1).png" alt="" />
+          <img className="" src="/Group 9 (2).png" alt="" />
+          <img className="" src="/Group 9 Copy.png" alt="" />
+          <img className="" src="/Group 9 Copy2.png" alt="" />
         </div>
       </div>
     </div>
