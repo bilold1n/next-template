@@ -1,7 +1,9 @@
+import { getMovie } from "@/movi";
 import React from "react";
 
-export default function Cart() {
-  //   const data = [{ name }];
+export default async function Cart() {
+  const request = await getMovie();
+  console.log(request);
   return (
     <div>
       <div className="container flex items-center">
