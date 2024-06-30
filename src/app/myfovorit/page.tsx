@@ -32,7 +32,7 @@ export default async function Cart() {
       </div>
 
       <div className="container">
-        <h2 className="mt-5 text-2xl">Biikmarked Movies</h2>
+        <h2 className="mt-5 text-2xl">Bookmarked Movies</h2>
         <div className="mygrid gap-8 mt-5">
           {request?.docs?.map(
             ({
