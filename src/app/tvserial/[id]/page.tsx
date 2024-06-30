@@ -18,7 +18,7 @@ export default async function Params({ params }: any) {
     <div className="container mt-5">
       <Link
         className="mt-5 px-5 py-3 rounded-2xl shadow-[0_1px_7px_0_rgba(255,0,255)] hover:bg-[rgba(255,0,255)]"
-        href={"/movies"}
+        href={"/tvserial"}
       >
         Back to home
       </Link>
@@ -53,7 +53,7 @@ export default async function Params({ params }: any) {
               </figure>
               <div className="card-body">
                 <div className="flex items-center gap-4">
-                  <span className="p-2 etext-[#ffffff] bg-[#2d1165] rounded-xl w-[190px] text-center">
+                  <span className="p-2 etext-[#ffffff] bg-[#2d1165] rounded-xl w-[100px] text-center">
                     Movie title{" "}
                   </span>{" "}
                   <h1 className="card-title text-5xl">
@@ -68,7 +68,7 @@ export default async function Params({ params }: any) {
                     <p>
                       {" "}
                       {description
-                        ? description.split(" ").slice(0, 25).join(" ")
+                        ? description.split(" ").slice(0, 15).join(" ")
                         : " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque ipsum optio aut quidem, at voluptatibus, impedit accusantium voluptate dolorum doloremque porro recusandae rerum aspernatur harum."}
                     </p>{" "}
                   </div>
