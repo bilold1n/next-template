@@ -1,9 +1,10 @@
 import { getMovie } from "@/movi";
+import Link from "next/link";
 import React from "react";
 
 export default async function Cart() {
   const request = await getMovie();
-  console.log(request);
+
   return (
     <div>
       <div className="container flex items-center">
@@ -31,21 +32,54 @@ export default async function Cart() {
 
       <div className="container">
         <h2 className="mt-5 text-2xl">Movies</h2>
-        <div className="justify-between gap-9 mt-5 grid grid-cols-4">
-          <img className="" src="/Group 2.png" alt="" />
-          <img className="" src="/Group 5.png" alt="" />
-          <img className="" src="/Group 6.png" alt="" />
-          <img className="" src="/Group 7.png" alt="" />
-          <img className="" src="/Group 8.png" alt="" />
-          <img className="" src="/Group 9.png" alt="" />
-
-          <img className="" src="/Group 12.png" alt="" />
-          <img className="" src="/Group 11.png" alt="" />
-          <img className="" src="/Group 9.png" alt="" />
-          <img className="" src="/Group 9 (1).png" alt="" />
-          <img className="" src="/Group 9 (2).png" alt="" />
-          <img className="" src="/Group 9 Copy.png" alt="" />
-          <img className="" src="/Group 9 Copy2.png" alt="" />
+        <div className="grid grid-cols-4 gap-16">
+          {request?.docs?.map(
+            ({
+              id,
+              name,
+              description,
+              year,
+              type,
+              poster,
+              backdrop,
+              alternativeName,
+            }) => {
+              return (
+                <Link href={`/movies/${id}`}>
+                  <div
+                    key={id}
+                    className="card card-compact bg-base-100 shadow-xl w-[300px]"
+                  >
+                    <figure>
+                      <img
+                        className="object-contain object-center w-[280px] h-[420px]"
+                        src={
+                          poster?.url ??
+                          backdrop?.url ??
+                          "https://yastatic.net/s3/kinopoisk-frontend/common-static/img/projector-logo/placeholder.svg"
+                        }
+                        alt={name}
+                        width={280}
+                        height={420}
+                      />
+                    </figure>
+                    <div className="card-body">
+                      <div className="flex items-center justify-between">
+                        <p>· {year}</p>
+                        <p>· {type}</p>
+                        <p>· 16+</p>
+                      </div>
+                      <h2>{name ?? alternativeName}</h2>
+                      <p className="text-[#f0ebeb61]">click me to see</p>
+                      {/* <div className="card-actions justify-end">
+                        <button className="btn btn-primary">Buy Now</button>
+                      </div> */}
+                    </div>
+                  </div>
+                </Link>
+              );
+            }
+          )}
         </div>
       </div>
     </div>
