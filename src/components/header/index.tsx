@@ -47,7 +47,7 @@ const Sidebar = () => {
           </svg>
         </Link>
         <Link
-          href={"/"}
+          href={"/tvserial"}
           className="group h-10 w-10 flex items-center justify-center text-[#475569] hover:text-white"
         >
           <svg

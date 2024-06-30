@@ -53,7 +53,7 @@ export default async function Params({ params }: any) {
               </figure>
               <div className="card-body">
                 <div className="flex items-center gap-4">
-                  <span className="p-2 text-[#ffffff] bg-[#2d1165] rounded-xl w-[100px] text-center">
+                  <span className="p-2 etext-[#ffffff] bg-[#2d1165] rounded-xl w-[190px] text-center">
                     Movie title{" "}
                   </span>{" "}
                   <h1 className="card-title text-5xl">

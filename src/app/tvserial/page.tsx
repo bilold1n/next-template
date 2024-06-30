@@ -2,8 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { Movie } from "@/types";
 import { getTrending } from "@/trending";
+import { gettiviserial } from "@/tvget";
 export default async function Cart() {
-  const request = await getTrending();
+  const request = await gettiviserial();
 
   return (
     <div className="pb-12">
@@ -25,14 +26,13 @@ export default async function Cart() {
             style={{ borderRadius: "12px", background: "none" }}
             type="text"
             className="grow outline-none p-2"
-            placeholder="Search for movies or tv series"
+            placeholder="Search for tv series"
           />
         </label>
       </div>
 
       <div className="container">
-        <h2 className="mt-5 text-2xl">Recommended for you</h2>
-
+        <h2 className="mt-5 text-2xl">Tv Series</h2>
         <div className="mygrid gap-8 mt-5">
           {request?.docs?.map(
             ({
@@ -46,7 +46,7 @@ export default async function Cart() {
               alternativeName,
             }: Movie) => {
               return (
-                <Link key={id} href={`/movies/${id}`}>
+                <Link key={id} href={`/tvserial/${id}`}>
                   <div className="card card-compact bg-base-100 shadow-xl w-full sm:w-[300px]">
                     <figure>
                       <img
