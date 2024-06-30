@@ -1,7 +1,7 @@
 import { getMovie } from "@/movi";
 import Link from "next/link";
 import React from "react";
-
+import { Movie } from "@/types";
 export default async function Cart() {
   const request = await getMovie();
 
@@ -20,19 +20,19 @@ export default async function Cart() {
             clipRule="evenodd"
           />
         </svg>
-        <label className=" flex items-center justify-start gap-2 w-[300px] outline-none">
+        <label className="flex items-center justify-start gap-2 w-[300px] outline-none">
           <input
             style={{ borderRadius: "12px", background: "none" }}
             type="text"
             className="grow outline-none p-2"
-            placeholder="Search for movies or TV series"
+            placeholder="Search for movies"
           />
         </label>
       </div>
 
       <div className="container">
         <h2 className="mt-5 text-2xl">Movies</h2>
-        <div className="grid grid-cols-4 gap-16">
+        <div className="mygrid gap-8 mt-5">
           {request?.docs?.map(
             ({
               id,
@@ -43,16 +43,13 @@ export default async function Cart() {
               poster,
               backdrop,
               alternativeName,
-            }) => {
+            }: Movie) => {
               return (
-                <Link href={`/movies/${id}`}>
-                  <div
-                    key={id}
-                    className="card card-compact bg-base-100 shadow-xl w-[300px]"
-                  >
+                <Link key={id} href={`/movies/${id}`}>
+                  <div className="card card-compact bg-base-100 shadow-xl w-full sm:w-[300px]">
                     <figure>
                       <img
-                        className="object-contain object-center w-[280px] h-[420px]"
+                        className="object-contain w-full h-[420px]"
                         src={
                           poster?.url ??
                           backdrop?.url ??
@@ -71,9 +68,6 @@ export default async function Cart() {
                       </div>
                       <h2>{name ?? alternativeName}</h2>
                       <p className="text-[#f0ebeb61]">click me to see</p>
-                      {/* <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
-                      </div> */}
                     </div>
                   </div>
                 </Link>

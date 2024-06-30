@@ -19,4 +19,17 @@
   .container {
     @apply max-w-[1480px] w-full mx-auto px-5;
   }
+  .mygrid {
+    @apply grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  @media screen and (max-width: 1057px) {
+    .mygrid {
+      @apply grid-cols-2;
+    }
+  }
+  @media screen and (max-width: 782px) {
+    .mygrid {
+      @apply grid-cols-1;
+    }
+  }
 }

@@ -85,7 +85,7 @@ const Sidebar = () => {
       </nav>
       <div className="w-full flex justify-center mt-auto mb-4">
         <img
-          src="path/to/profile.jpg"
+          src="https://www.svgrepo.com/show/192247/man-user.svg"
           alt="Profile"
           className="w-10 h-10 rounded-full"
         />
