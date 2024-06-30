@@ -1,7 +1,11 @@
+import { getMovie } from "@/movi";
+import Link from "next/link";
 import React from "react";
+import { Movie } from "@/types";
+import { getmyfovoret } from "@/myfovoretget";
+export default async function Cart() {
+  const request = await getmyfovoret();
 
-export default function Cart() {
-  //   const data = [{ name }];
   return (
     <div>
       <div className="container flex items-center">
@@ -17,23 +21,60 @@ export default function Cart() {
             clipRule="evenodd"
           />
         </svg>
-        <label className=" flex items-center justify-start gap-2 w-[300px] outline-none">
+        <label className="flex items-center justify-start gap-2 w-[300px] outline-none">
           <input
             style={{ borderRadius: "12px", background: "none" }}
             type="text"
             className="grow outline-none p-2"
-            placeholder="Search for movies or TV series"
+            placeholder="Search for movies"
           />
         </label>
       </div>
+
       <div className="container">
-        <h2 className="mt-5 text-2xl">Bookmarked Movies</h2>
-        <div className="justify-between gap-9 mt-5 grid grid-cols-4">
-          <img className="" src="/Group 2.png" alt="" />
-          <img className="" src="/Group 5.png" alt="" />
-          <img className="" src="/Group 6.png" alt="" />
-          <img className="" src="/Group 7.png" alt="" />
-          <img className="" src="/Group 11.png" alt="" />
+        <h2 className="mt-5 text-2xl">Biikmarked Movies</h2>
+        <div className="mygrid gap-8 mt-5">
+          {request?.docs?.map(
+            ({
+              id,
+              name,
+              description,
+              year,
+              type,
+              poster,
+              backdrop,
+              alternativeName,
+            }: Movie) => {
+              return (
+                <Link key={id} href={`/myfovorit/${id}`}>
+                  <div className="card card-compact bg-base-100 shadow-xl w-full sm:w-[300px]">
+                    <figure>
+                      <img
+                        className="object-contain w-full h-[420px]"
+                        src={
+                          poster?.url ??
+                          backdrop?.url ??
+                          "https://yastatic.net/s3/kinopoisk-frontend/common-static/img/projector-logo/placeholder.svg"
+                        }
+                        alt={name}
+                        width={280}
+                        height={420}
+                      />
+                    </figure>
+                    <div className="card-body">
+                      <div className="flex items-center justify-between">
+                        <p>· {year}</p>
+                        <p>· {type}</p>
+                        <p>· 16+</p>
+                      </div>
+                      <h2>{name ?? alternativeName}</h2>
+                      <p className="text-[#f0ebeb61]">click me to see</p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            }
+          )}
         </div>
       </div>
     </div>

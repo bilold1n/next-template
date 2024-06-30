@@ -1,12 +1,22 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Sidebar = () => {
-  const [selected, setSelected] = useState("/");
+  const [selected, setSelected] = useState("");
 
-  const handleSelect = (path: any) => {
+  useEffect(() => {
+    const savedSelected = localStorage.getItem("selectedPath");
+    if (savedSelected) {
+      setSelected(savedSelected);
+    } else {
+      setSelected("/");
+    }
+  }, []);
+
+  const handleSelect = (path: string) => {
     setSelected(path);
+    localStorage.setItem("selectedPath", path);
   };
 
   return (

@@ -2,8 +2,23 @@ import Link from "next/link";
 import React from "react";
 import { Movie } from "@/types";
 import { getTrending } from "@/trending";
+
 export default async function Cart() {
   const request = await getTrending();
+
+  const req = await fetch(
+    `https://api.kinopoisk.dev/v1.4/movie?rating.imdb=9-10&limit=3`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": "KCAF750-7XJ4DKA-MSHYH4X-0157ENA",
+      },
+    }
+  );
+
+  const res = await req.json();
+  const data = res;
+  console.log(data);
 
   return (
     <div className="pb-12">
@@ -29,7 +44,49 @@ export default async function Cart() {
           />
         </label>
       </div>
+      <h2 className="container mb-5 mt-5 text-2xl">Trending</h2>
 
+      <div className="flex items-center justify-between container">
+        {data?.docs?.map(
+          ({
+            id,
+            name,
+            description,
+            year,
+            type,
+            poster,
+            backdrop,
+            alternativeName,
+          }: Movie) => {
+            return (
+              <Link key={id} href={`/${id}`}>
+                <div
+                  style={{
+                    backgroundImage: `url(${
+                      poster?.url ??
+                      backdrop?.url ??
+                      "https://yastatic.net/s3/kinopoisk-frontend/common-static/img/projector-logo/placeholder.svg"
+                    })`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                  className="w-[400px] h-[230px] card card-compact bg-base-100 shadow-xl "
+                >
+                  <div className="card-body w-[400px] text-[#fff] mt-[100px] ">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xl">· {year}</p>
+                      <p className="text-xl">· {type}</p>
+                      <p className="text-xl">· 16+</p>
+                    </div>
+                    <h2>{name ?? alternativeName}</h2>
+                    <p className="text-[#fff] text-2xl">click me to see</p>
+                  </div>
+                </div>
+              </Link>
+            );
+          }
+        )}
+      </div>
       <div className="container">
         <h2 className="mt-5 text-2xl">Recommended for you</h2>
 
@@ -46,7 +103,7 @@ export default async function Cart() {
               alternativeName,
             }: Movie) => {
               return (
-                <Link key={id} href={`/movies/${id}`}>
+                <Link key={id} href={`/${id}`}>
                   <div className="card card-compact bg-base-100 shadow-xl w-full sm:w-[300px]">
                     <figure>
                       <img
