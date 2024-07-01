@@ -2,7 +2,7 @@
 export async function getmyfovoret() {
   try {
     const req = await fetch(
-      "https://api.kinopoisk.dev/v1.4/movie?cartoon&limit=12",
+      "https://api.kinopoisk.dev/v1.4/movie?rating.imdb=4-6&limit=12",
       {
         headers: {
           "Content-Type": "application/json",
