@@ -18,7 +18,7 @@ export default function Cart() {
     fetch("https://api.kinopoisk.dev/v1.4/movie?rating.imdb=8-10&limit=12", {
       headers: {
         "Content-Type": "application/json",
-        "X-API-KEY": "QQWNV3A-M7D48H9-NFQACDX-S2F394Z",
+        "X-API-KEY": "A838WS3-0YZ4YBN-MC2XD8N-FD7X52Z",
       },
     })
       .then((res) => res.json())
@@ -33,7 +33,7 @@ export default function Cart() {
     fetch("https://api.kinopoisk.dev/v1.4/movie?rating.imdb=9-10&limit=3", {
       headers: {
         "Content-Type": "application/json",
-        "X-API-KEY": "QQWNV3A-M7D48H9-NFQACDX-S2F394Z",
+        "X-API-KEY": "A838WS3-0YZ4YBN-MC2XD8N-FD7X52Z",
       },
     })
       .then((res) => res.json())
@@ -76,70 +76,68 @@ export default function Cart() {
             style={{ borderRadius: "12px", background: "none" }}
             type="text"
             className="grow outline-none p-2"
-            placeholder="Search for tv series"
+            placeholder="Search for tv series or movies"
           />
         </label>
       </div>
       <h2 className="container mb-5 mt-5 text-2xl">Trending</h2>
 
       <div className="flex items-center justify-between container">
-        {data.map((movie: Movie) => {
+        {data?.map((movie: Movie) => {
           return (
-            <Link key={movie.id} href={`/${movie.id}`}>
-              <div
-                style={{
-                  backgroundImage: `url(${
-                    movie.poster?.url ??
-                    movie.backdrop?.url ??
-                    "https://yastatic.net/s3/kinopoisk-frontend/common-static/img/projector-logo/placeholder.svg"
-                  })`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                }}
-                className="w-[400px] h-[230px] card card-compact bg-base-100 shadow-xl"
-              >
-                <div className="card-body w-[400px] text-[#fff] mt-[100px]">
-                  <span
-                    className="absolute top-5 right-5 cursor-pointer"
-                    onClick={() => addToFavorites(movie)}
+            <div
+              style={{
+                backgroundImage: `url(${
+                  movie.poster?.url ??
+                  movie.backdrop?.url ??
+                  "https://yastatic.net/s3/kinopoisk-frontend/common-static/img/projector-logo/placeholder.svg"
+                })`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+              className="w-[400px] h-[230px] card card-compact bg-base-100 shadow-xl"
+            >
+              <div className="card-body w-[400px] text-[#fff] mt-[100px]">
+                <span
+                  className="absolute top-5 right-5 cursor-pointer"
+                  onClick={() => addToFavorites(movie)}
+                >
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="hover:fill-white"
+                    style={
+                      fav.find((favMovie) => favMovie.id === movie.id)
+                        ? { fill: "white" }
+                        : {}
+                    }
                   >
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="hover:fill-white"
-                      style={
-                        fav.find((favMovie) => favMovie.id === movie.id)
-                          ? { fill: "white" }
-                          : {}
-                      }
-                    >
-                      <circle
-                        opacity="0.500647"
-                        cx="16"
-                        cy="16"
-                        r="16"
-                        fill="#10141E"
-                      />
-                      <path
-                        d="M20.7112 9.771L20.7215 9.77548L20.7319 9.77965C20.7992 9.80657 20.8386 9.84049 20.8705 9.88692C20.9032 9.93458 20.9167 9.97786 20.9167 10.0364V21.9636C20.9167 22.0221 20.9032 22.0654 20.8705 22.1131C20.8386 22.1595 20.7992 22.1934 20.7319 22.2203L20.7237 22.2236L20.7156 22.2271C20.7107 22.2292 20.6807 22.2407 20.6094 22.2407C20.5085 22.2407 20.4397 22.2142 20.3686 22.15L16.3572 18.2346L15.8333 17.7233L15.3095 18.2346L11.2975 22.1505C11.2129 22.2276 11.1421 22.25 11.0573 22.25C11.02 22.25 10.9882 22.2433 10.9555 22.229L10.9452 22.2245L10.9347 22.2203C10.8674 22.1934 10.8281 22.1595 10.7962 22.1131C10.7635 22.0654 10.75 22.0221 10.75 21.9636V10.0364C10.75 9.97786 10.7635 9.93458 10.7962 9.88692C10.8281 9.84049 10.8674 9.80657 10.9347 9.77965L10.9452 9.77548L10.9555 9.771C10.9882 9.75674 11.02 9.75 11.0573 9.75H20.6094C20.6466 9.75 20.6784 9.75674 20.7112 9.771Z"
-                        stroke="white"
-                        strokeWidth="1.5"
-                      />
-                    </svg>
-                  </span>
-                  <div className="flex items-center justify-between">
-                    <p className="text-xl">· {movie.year}</p>
-                    <p className="text-xl">· {movie.type}</p>
-                    <p className="text-xl">· 16+</p>
-                  </div>
-                  <h2>{movie.name ?? movie.alternativeName}</h2>
-                  <p className="text-[#fff] text-2xl">click me to see</p>
+                    <circle
+                      opacity="0.500647"
+                      cx="16"
+                      cy="16"
+                      r="16"
+                      fill="#10141E"
+                    />
+                    <path
+                      d="M20.7112 9.771L20.7215 9.77548L20.7319 9.77965C20.7992 9.80657 20.8386 9.84049 20.8705 9.88692C20.9032 9.93458 20.9167 9.97786 20.9167 10.0364V21.9636C20.9167 22.0221 20.9032 22.0654 20.8705 22.1131C20.8386 22.1595 20.7992 22.1934 20.7319 22.2203L20.7237 22.2236L20.7156 22.2271C20.7107 22.2292 20.6807 22.2407 20.6094 22.2407C20.5085 22.2407 20.4397 22.2142 20.3686 22.15L16.3572 18.2346L15.8333 17.7233L15.3095 18.2346L11.2975 22.1505C11.2129 22.2276 11.1421 22.25 11.0573 22.25C11.02 22.25 10.9882 22.2433 10.9555 22.229L10.9452 22.2245L10.9347 22.2203C10.8674 22.1934 10.8281 22.1595 10.7962 22.1131C10.7635 22.0654 10.75 22.0221 10.75 21.9636V10.0364C10.75 9.97786 10.7635 9.93458 10.7962 9.88692C10.8281 9.84049 10.8674 9.80657 10.9347 9.77965L10.9452 9.77548L10.9555 9.771C10.9882 9.75674 11.02 9.75 11.0573 9.75H20.6094C20.6466 9.75 20.6784 9.75674 20.7112 9.771Z"
+                      stroke="white"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                </span>
+                <div className="flex items-center justify-between">
+                  <p className="text-xl">· {movie.year}</p>
+                  <p className="text-xl">· {movie.type}</p>
+                  <p className="text-xl">· 16+</p>
                 </div>
+                <h2>{movie.name ?? movie.alternativeName}</h2>
+                <p className="text-[#fff] text-2xl">click me to see</p>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
@@ -147,7 +145,7 @@ export default function Cart() {
       <div className="container">
         <h2 className="mt-5 text-2xl">Tv Series</h2>
         <div className="mygrid gap-8 mt-5">
-          {request.map((movie: Movie) => {
+          {request?.map((movie: Movie) => {
             return (
               <div
                 key={movie.id}

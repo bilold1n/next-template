@@ -17,7 +17,7 @@ export default function Cart() {
     fetch("https://api.kinopoisk.dev/v1.4/movie?type=tv-series&limit=20", {
       headers: {
         "Content-Type": "application/json",
-        "X-API-KEY": "QQWNV3A-M7D48H9-NFQACDX-S2F394Z",
+        "X-API-KEY": "A838WS3-0YZ4YBN-MC2XD8N-FD7X52Z",
       },
     })
       .then((res) => res.json())

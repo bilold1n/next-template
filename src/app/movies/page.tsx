@@ -5,6 +5,7 @@ import { Movie } from "@/types";
 
 export default function Cart() {
   const [fav, setFav] = useState<Movie[]>([]);
+  const [search, setsearch] = useState("");
 
   useEffect(() => {
     const favs =
@@ -15,19 +16,22 @@ export default function Cart() {
   const [request, setRequest] = useState<Movie[]>([]);
 
   useEffect(() => {
-    fetch("https://api.kinopoisk.dev/v1.4/movie?limit=24", {
-      headers: {
-        "Content-Type": "application/json",
-        "X-API-KEY": "QQWNV3A-M7D48H9-NFQACDX-S2F394Z",
-      },
-    })
+    fetch(
+      `https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=20&query=${search}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": "A838WS3-0YZ4YBN-MC2XD8N-FD7X52Z",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         setRequest(res.docs ?? []);
         console.log(res);
       })
       .catch((error) => console.error("Error fetching movies:", error));
-  }, []);
+  }, [search]);
 
   const addtofeverits = (movie: Movie) => {
     const isFav = fav.some((favMovie) => favMovie.id === movie.id);
@@ -63,6 +67,7 @@ export default function Cart() {
             type="text"
             className="grow outline-none p-2"
             placeholder="Search for movies"
+            onChange={(e) => setsearch(e.target.value)}
           />
           <button type="submit" className="hidden">
             Submit
