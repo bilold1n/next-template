@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html data-theme="synthwave">
       <body>
-        <div className="flex">
+        <div className="flex containersidebar">
           <Sidebar />
           <div className="flex-1 p-4">{children}</div>
         </div>

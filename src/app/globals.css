@@ -19,6 +19,9 @@
   .container {
     @apply max-w-[1480px] w-full mx-auto px-5;
   }
+  .containersidebar {
+    @apply px-5 mx-auto my-3;
+  }
   .mygrid {
     @apply grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4;
   }
