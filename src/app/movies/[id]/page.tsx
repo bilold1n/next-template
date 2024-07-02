@@ -98,13 +98,13 @@ export default async function Params({ params }: any) {
                         <span className="p-2 text-[#ffffff] bg-[#2d1165] rounded-xl w-[100px] text-center">
                           Genre{" "}
                         </span>{" "}
-                        <p>{genres[0]?.name}</p>
+                        <p>{genres?.name}</p>
                       </div>{" "}
                       <div className="flex gap-4 items-center">
                         <span className="p-2 text-[#ffffff] bg-[#2d1165] rounded-xl w-[100px] text-center">
                           Countries{" "}
                         </span>{" "}
-                        <p>{countries[0]?.name}</p>
+                        <p>{countries?.name}</p>
                       </div>
                       <div className="flex gap-4 items-center">
                         <span className="p-2 text-[#ffffff] bg-[#2d1165] rounded-xl w-[100px] text-center">
