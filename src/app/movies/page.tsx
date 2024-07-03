@@ -2,8 +2,18 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Movie } from "@/types";
+import { getMovie } from "@/movi";
 
 export default function Cart() {
+  const [data, setData] = useState<Movie[]>([]);
+  const [request, setRequest] = useState<Movie[]>([]);
+  const myreq = getMovie();
+  useEffect(() => {
+    myreq.then((res) => setData(res.docs));
+    console.log(myreq.then((res) => console.log(res.docs)));
+    console.log(data);
+  }, []);
+
   const [fav, setFav] = useState<Movie[]>([]);
   const [search, setsearch] = useState("");
 
@@ -12,8 +22,6 @@ export default function Cart() {
       JSON.parse(window.localStorage.getItem("feverits") as string) ?? [];
     setFav(favs);
   }, []);
-
-  const [request, setRequest] = useState<Movie[]>([]);
 
   useEffect(() => {
     fetch(
@@ -69,16 +77,13 @@ export default function Cart() {
             placeholder="Search for movies"
             onChange={(e) => setsearch(e.target.value)}
           />
-          <button type="submit" className="hidden">
-            Submit
-          </button>
         </form>
       </div>
 
       <div className="container">
         <h2 className="mt-5 text-2xl">Movies</h2>
         <div className="mygrid gap-8 mt-5">
-          {request.map((movie: Movie) => (
+          {data.map((movie: Movie) => (
             <div
               key={movie.id}
               className="card card-compact bg-base-100 shadow-xl w-full sm:w-[300px] relative"
